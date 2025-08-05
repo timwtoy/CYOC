@@ -3,13 +3,13 @@ import { RecipePart, RecipePartType } from '../../shared/models/recipe.model';
 import { Dropdown } from '../../shared/dropdown/dropdown';
 
 @Component({
-  selector: 'app-finder',
+  selector: 'app-recipe-part',
   imports: [Dropdown],
   standalone: true,
-  templateUrl: './finder.html',
-  styleUrl: './finder.scss'
+  templateUrl: './recipe-part.html',
+  styleUrl: './recipe-part.scss'
 })
-export class Finder implements OnInit {
+export class RecipePartComponent implements OnInit {
   recipeParts: RecipePart[] = []
   filterValue: string = ``;
 

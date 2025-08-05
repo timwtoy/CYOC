@@ -21,22 +21,26 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrl: './dropdown.scss',
 })
 export class Dropdown implements OnInit {
-  // recipeParts = input.required<RecipePart[]>();
+  recipeParts = input.required<RecipePart[]>();
 
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions!: Observable<string[]>;
+  filteredOptions!: Observable<RecipePart[]>;
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value || '')),
+      map(value => this._filter(value)),
     );
   }
 
-  private _filter(value: string): string[] {
+  private _filter(value: string | null): RecipePart[] {
+    if (!value) {
+      return [];
+    }
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.recipeParts().filter(part => {
+      return part.title?.toLowerCase().includes(filterValue);
+    });
   }
 }

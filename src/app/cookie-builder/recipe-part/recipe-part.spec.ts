@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RecipePartComponent } from './recipe-part';
 
-import { Finder } from './finder';
-
-describe('Finder', () => {
-  let component: Finder;
-  let fixture: ComponentFixture<Finder>;
+describe('RecipePart', () => {
+  let component: RecipePartComponent;
+  let fixture: ComponentFixture<RecipePartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Finder]
+      imports: [RecipePartComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(Finder);
+    fixture = TestBed.createComponent(RecipePartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
