@@ -29,15 +29,24 @@ export class Dropdown implements OnInit {
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value)),
+      map((value: string | null | RecipePart) => {
+        if (typeof value === `string`) {
+          return this._filter(value || '');
+        }
+        return this._filter((value as RecipePart).title || '');
+      }),
     );
   }
 
-  private _filter(value: string | null): RecipePart[] {
+  displayFn(part: RecipePart): string {
+    return part?.title ? part.title : '';
+  }
+
+  private _filter(value: string): RecipePart[] {
     if (!value) {
       return [];
     }
-    const filterValue = value.toLowerCase();
+    const filterValue = value?.toLowerCase();
 
     return this.recipeParts().filter(part => {
       return part.title?.toLowerCase().includes(filterValue);
