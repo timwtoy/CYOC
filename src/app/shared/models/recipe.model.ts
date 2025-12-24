@@ -1,17 +1,20 @@
 export interface Recipe {
     title?: string;
     recipeParts?: RecipePart[];
+    recipeId?: string;
 }
 
 export interface RecipePart {
     partType?: RecipePartType,
     title?: string;
     ingredients?: Ingredient[];
+    recipePartId?: string;
 }
 
 export enum RecipePartType {
-    FILLED = `filled`,
-    STANDARD = `standard`
+    FILLING = 'FILLING',
+    DOUGH = 'DOUGH',
+    TOPPING = 'TOPPING'
 }
 
 export interface Ingredient {

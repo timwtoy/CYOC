@@ -19,7 +19,7 @@ export class RecipePartComponent implements OnInit {
 
   recipePartsList = computed<RecipePart[]>(() => {
     return [{
-      partType: RecipePartType.STANDARD,
+      partType: RecipePartType.FILLING,
       title: 'Blueberry compote',
       ingredients: [
         {
@@ -32,7 +32,7 @@ export class RecipePartComponent implements OnInit {
         }
       ]
     }, {
-      partType: RecipePartType.FILLED,
+      partType: RecipePartType.FILLING,
       title: 'Raspberry compote',
       ingredients: [
         {
